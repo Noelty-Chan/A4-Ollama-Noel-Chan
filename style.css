@@ -5,52 +5,103 @@ body {
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
     background-color: #f5f4f2;
+}
+
+header,
+footer {
+    flex: 0 0 auto;
 }
 
 main {
     padding: 1em;
     display: grid;
-    place-items: center;
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    align-items: stretch;
     width: min(100%, 900px);
     margin: 0 auto;
     flex: 1;
+    min-height: 0;
 }
 
 #conversation {
     width: 100%;
-    max-height: 60vh;
+    min-height: 0;
     overflow-y: auto;
     text-align: left;
+    padding: 0.5rem 0.75rem;
     margin-bottom: 1rem;
 }
 
 .message {
+    position: relative;
     margin: 0.75rem 0;
     padding: 0.8rem 1rem;
-    border-radius: 0.75rem;
+    border: 2px solid #252525;
+    border-radius: 1.15rem;
 }
 
 .message p {
-    color: #222;
+    color: #000;
     margin: 0.35rem 0 0;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
 
 .message.user {
-    background: #e7f2eb;
+    background: #fff;
+    border-left: 2px solid #252525;
     margin-left: 12%;
+    border-bottom-right-radius: 0.3rem;
 }
 
 .message.assistant {
-    background: #fff;
+    background: #000;
     margin-right: 12%;
+    border-bottom-left-radius: 0.3rem;
+}
+
+.message.assistant p {
+    color: #fff;
+}
+
+.message.user::after,
+.message.assistant::after {
+    content: "";
+    position: absolute;
+    bottom: -0.55rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: inherit;
+    border-bottom: 2px solid #252525;
+}
+
+.message.user::after {
+    right: 0.75rem;
+    border-right: 2px solid #252525;
+    transform: skew(0, 35deg);
+}
+
+.message.assistant::after {
+    left: 0.75rem;
+    border-left: 2px solid #252525;
+    transform: skew(0, -35deg);
+}
+
+.message.user strong {
+    color: #000;
+}
+
+.message.assistant strong {
+    color: #fff;
 }
 
 #promptForm {
     width: 100%;
+    margin: 0;
 }
 
 #promptForm button {
