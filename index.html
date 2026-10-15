@@ -14,6 +14,9 @@
         <img src="https://djeqr6to3dedg.cloudfront.net/repo-logos/ollama/ollama/live/logo-1701412810306.png" width="50">
     </header>
     <main>
+        <section id="conversation" aria-label="Conversation history" aria-live="polite">
+            <p id="emptyHistory">Your conversation will appear here.</p>
+        </section>
         <form id="promptForm">
 
             <select id="model">
@@ -25,7 +28,7 @@
             </div>
            
         </form>
-        <p id="answer"></p>
+        <button type="button" id="clearHistory">Clear conversation</button>
     </main>
     <footer>
         <p id="error"></p>
